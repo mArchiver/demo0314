@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/components/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    //- Navbar
+    .navbar.navbar-inverse.navbar-fixed-top
+        .container
+            .navbar-header
+                .navbar-toggle
+                a.navbar-brand() Demo1403
+            .navbar-collapse.collapse
+                //- ul.nav.navbar-nav
+                     li
+
+    //- content
+    .container
+        block content
+
+    script(type="text/javascript", src="/components/jquery/dist/jquery.min.js")
