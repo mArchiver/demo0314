@@ -12,9 +12,15 @@ html
                 .navbar-toggle
                 a.navbar-brand() Demo1403
             .navbar-collapse.collapse
-                //- ul.nav.navbar-nav
+                ul.nav.navbar-nav
                      li
-
+                ul.nav.navbar-nav.pull-ight
+                    if user
+                        li
+                            a(href="/logout") Logout
+                    else
+                        li
+                            a(href="/auth/google") Login
     //- content
     .container
         block content
