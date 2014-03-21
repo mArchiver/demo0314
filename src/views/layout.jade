@@ -14,8 +14,10 @@ html
             .navbar-collapse.collapse
                 ul.nav.navbar-nav
                      li
-                ul.nav.navbar-nav.pull-ight
+                ul.nav.navbar-nav.pull-right
                     if user
+                        li
+                            a=user.email
                         li
                             a(href="/logout") Logout
                     else

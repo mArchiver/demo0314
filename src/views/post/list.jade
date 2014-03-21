@@ -1,10 +1,12 @@
 extends ../layout
 
 block content
-    h1="post"
+    h1="Simple board"
+    div#toolbar
+        a.btn(href="/posts/new") New Post
     div#board
         each post in posts
             .post
                 .title=post.title
                 .body=post.body
-                .author="by " + post.author
+                .author="Author: " + post.author.name
