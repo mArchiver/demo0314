@@ -5,6 +5,7 @@ var express = require('express'),
 var app     = express();
 
 require('./src/config/express')(app, config);
+require('./src/config/passport')(app, config);
 require('./src/config/database')(config);
 require('./src/routes')(app);
 
