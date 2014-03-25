@@ -7,6 +7,8 @@ block content
     div#board
         each post in posts
             .post
-                .title=post.title
-                .body=post.body
-                .author="Author: " + post.author.name
+                h3.title=post.title
+                .content=post.content
+                hr
+                .author="Author: " + (post.author && post.author.name || "匿名" )
+                .time=post.createTime

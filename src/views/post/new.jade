@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+    .row
+        .col-md-8
+            form(id="", method="POST", action="/posts")
+                h1="New Post"
+                .form-group
+                    label(for="title")="標題"
+                    input.form-control(type="text", name="title", placeholder="Title ...")
+                .form-group
+                    label(for="content")="內容"
+                    textarea.form-control(name="content", rows="3", placeholder="content ...")
+                button.btn.btn-default(type="submit", ) 送出留言

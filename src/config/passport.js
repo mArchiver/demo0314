@@ -2,6 +2,7 @@
 var passport = require('passport')
   , GoogleStrategy = require('passport-google').Strategy;
 
+var User = require('../models/user');
 
 module.exports = function(app, config) {
 
@@ -11,7 +12,7 @@ module.exports = function(app, config) {
     });
 
     passport.deserializeUser(function(user, done) {
-        console.log('deserializeUser', user);
+        // console.log('deserializeUser', user);
         done(null, user);
     });
 
@@ -21,22 +22,37 @@ module.exports = function(app, config) {
             stateless: true
         },
         function(identifier, profile, done) {
-            var user = {
-                id: profile.emails[0].value,
-                email: profile.emails[0].value
+            console.log(identifier, profile);
+            var now = new Date;
+            var query = {
+                'openId': identifier,
+                'email': profile.emails[0].value
             };
-            done(null, user);
+
+            var update = {
+                $set:{
+                    'lastLogin' : now
+                },
+                $setOnInsert: {
+                    'createTime': now,
+                    'name': profile.displayName
+                }
+            };
+
+            User.findOneAndUpdate(query, update, { upsert: true }, function (err, user) {
+                done(null, user);
+            });
         }
     ));
 
     app.get('/auth/google', passport.authenticate('google'));
     app.get('/auth/google/return',
 
-    passport.authenticate('google', { successRedirect: '/',
+    passport.authenticate('google', { successRedirect: '/posts',
                                     failureRedirect: '/login' }));
 
-    app.post('/login', passport.authenticate('local', { successRedirect: '/',
-                                                    failureRedirect: '/login' }));
+    // app.post('/login', passport.authenticate('local', { successRedirect: '/posts',
+    //                                                 failureRedirect: '/login' }));
 
     app.get('/logout', function(req, res){
         req.logout();

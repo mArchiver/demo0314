@@ -22,6 +22,7 @@ module.exports = function(app, config) {
 
     app.use(express.cookieParser());
     app.use(express.bodyParser());
+    app.use(express.cookieSession({ secret: 'keyboard cat' }));
     app.use(express.session({ secret: 'keyboard cat' }));
 
     // Auth

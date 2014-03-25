@@ -14,7 +14,9 @@ exports.show = function (req, res) {
 }
 
 exports.new = function (req, res) {
-    res.send('done');
+    res.render('post/new',{
+        //
+    });
 }
 
 exports.edit = function (req, res) {
@@ -22,7 +24,13 @@ exports.edit = function (req, res) {
 }
 
 exports.create = function (req, res) {
-    res.send('done');
+    Post.create({
+        title: req.body.title,
+        content: req.body.content,
+        author: req.user && req.user._id || null
+    }, function  (err, result) {
+        res.redirect('/posts');
+    });
 }
 
 exports.update = function (req, res) {
