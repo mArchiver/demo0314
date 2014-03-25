@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+    h1="Simple board"
+    div#board
+        .post
+            h3.title
+                a(href="/posts/" + post._id)= post.title
+            .content
+                =post.content
+            hr
+            .comments= "" + post.comments.length + "個回應"
+            .author="Author: " + (post.author && post.author.name || "匿名" )
+            .time=post.createTime

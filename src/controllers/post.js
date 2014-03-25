@@ -10,7 +10,13 @@ exports.list = function (req, res) {
 }
 
 exports.show = function (req, res) {
-    res.send('done');
+    Post.findOne({
+        _id: req.params.id
+    }, function  (err, post) {
+        res.render('post/show', {
+            post: post
+        });
+    });
 }
 
 exports.new = function (req, res) {
