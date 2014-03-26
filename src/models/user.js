@@ -1,14 +1,15 @@
 var mongoose = require('mongoose');
 
 var UserSchema = mongoose.Schema({
-    name: String
+    name: String,
+    openId: String,
+    email: String,
+    createTime: Date,
+    lastLogin: Date
 });
+
 
 var User = mongoose.model('User', UserSchema);
 
+module.exports = User;
 
-// var dca = new User({ name: 'dca' });
-
-// dca.save(function (err, docs) {
-//     console.info('user saved');
-// });

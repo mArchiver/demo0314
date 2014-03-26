@@ -7,8 +7,10 @@
   },
   "dependencies": {
     "express": "3.4.8",
-    "jade": "*",
-    "less-middleware": "*"
+    "jade": "~1.3.0",
+    "less-middleware": "~0.2.1-beta",
+    "passport": "~0.2.0",
+    "passport-google": "~0.3.0"
   },
   "devDependencies": {
     "grunt-contrib-watch": "~0.6.0",

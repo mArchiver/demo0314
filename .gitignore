@@ -1,1 +1,4 @@
 public/components
+style.css
+node_modules/
+.DS_Store
