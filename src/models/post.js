@@ -29,6 +29,15 @@ PostSchema.statics.list = function (callback) {
 }
 
 
+PostSchema.statics.findPost = function (args, callback) {
+    this.findOne({ _id: args.id })
+        .populate('author')
+        .populate('comments')
+        .exec(function (err, posts) {
+            callback(err, posts);
+        });
+}
+
 var Post = mongoose.model('Post', PostSchema);
 
 module.exports = Post;
