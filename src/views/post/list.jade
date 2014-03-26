@@ -7,8 +7,11 @@ block content
     div#board
         each post in posts
             .post
-                h3.title=post.title
-                .content=post.content
+                h3.title
+                    a(href="/posts/" + post._id)= post.title
+                .content
+                    =post.content
                 hr
+                .comments= "" + post.comments.length + "個回應"
                 .author="Author: " + (post.author && post.author.name || "匿名" )
                 .time=post.createTime

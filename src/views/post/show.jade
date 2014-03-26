@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+    h1="Simple board"
+    div#board
+        .post
+            h2.title= post.title
+            .content
+                =post.content
+            hr
+            .comments= "" + post.comments.length + "個回應"
+            .author="Author: " + (post.author && post.author.name || "匿名" )
+            .time=post.createTime
+
+            h3="Comments"
+            each comment in post.comments
+                div
+                    div=comment.createTime
+                    div=comment.content
+                hr
+        div.formComment
+            form()
+                .form-group
+                    label(for="comment")="留下回應"
+                    textarea.form-control(name="comment", rows="3", placeholder="comment ...")
+                button.btn.btn-default.btnCommentSubmit() 送出留言
